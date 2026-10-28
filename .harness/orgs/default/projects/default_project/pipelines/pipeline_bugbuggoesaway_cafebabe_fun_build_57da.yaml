@@ -1,0 +1,27 @@
+pipeline:
+  id: pipeline_bugbuggoesaway_cafebabe_fun_build_57da
+  name: pipeline_bugbuggoesaway_cafebabe_fun_build_57da
+  stages:
+    - name: Build
+      id: build
+      runtime: cloud
+      platform:
+        os: linux
+        arch: amd64
+      clone:
+        enabled: true
+      cache:
+        enabled: true
+      steps:
+        - name: Install Dependencies
+          id: install_dependencies
+          run:
+            shell: bash
+            script: npm ci
+        - name: Build Site
+          id: build_site
+          run:
+            shell: bash
+            script: npm run build
+  tags:
+    onboarding: "true"
